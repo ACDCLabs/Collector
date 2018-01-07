@@ -5,7 +5,8 @@ myConfig.DB_NAME = 'CloudChamberData';
 myConfig.DB_USER = 'acdc';
 myConfig.DB_PASSWORD=  'acdc';
 myConfig.DB_HOST = 'localhost';
-myConfig.SERIAL_INTERFACE ='/dev/cu.usbmodem14411';
+// myConfig.SERIAL_INTERFACE ='/dev/cu.usbmodem14411';
+myConfig.SERIAL_INTERFACE ='/dev/ttyACM0';
 myConfig.SERIAL_BAUDRATE = 115200;
 
 // these is the data model as stored in the MySQL Database
