@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <h1>
+    Dashboard
+  </h1>
+  <div class="row">
+
+    <a *ngFor="let temp of temperatures">
+      <div class="col-md-3">
+        <tempGauge [gaugeTemp]="temp"> </tempGauge>
+      </div>
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <tempChart [tempChartData]="temperatureCurve"></tempChart>
+    </div>
+
+  </div>
+
+</div>
