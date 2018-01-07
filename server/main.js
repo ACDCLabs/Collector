@@ -25,7 +25,7 @@ var dbConnection = mysql.createConnection({
 var dbDataModel = myConfig.dataModel;
 //      4    3   1   5  2   6   7   0
 var temperatures = {
-  Temp: [41, 0.69, 14.38,-10.13, -29.9, 8.31, 21]
+  "Temp": [41, 0.69, 14.38,-10.13, -29.9, 8.31, 21]
 };
 
 // set up a connection the the mySQL database
@@ -41,7 +41,7 @@ function storeTemperatures(temps) {
   var timeStamp = new Date();
   console.log('Storing Data');
   console.log(temps);
-  var tempValues = temps["Temp"];
+  let tempValues = JSON.parse(temps).Temp;
   console.log(tempValues);
   for (i = 0; i < tempValues.length; i++) {
     dbDataModel.time = timeStamp;
@@ -63,7 +63,7 @@ var arduinoPort = new serialPort(myConfig.SERIAL_INTERFACE, {
   function(err) {
     console.log(err);
     //console.log(arduinoPort);
-    // var serialSimulator = setInterval(() => storeTemperatures(temperatures), 2000);
+    var serialSimulator = setInterval(() => storeTemperatures(temperatures), 2000);
   }
 );
 
