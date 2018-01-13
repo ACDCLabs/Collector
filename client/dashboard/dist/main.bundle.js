@@ -258,8 +258,9 @@ var ArduinoCloudService = (function () {
     function ArduinoCloudService(http, zone) {
         this.http = http;
         this.zone = zone;
-        this.baseUrl = 'http://localhost:4080/api';
+        this.baseUrl = 'http://' + window.location.hostname + ':4080/api';
         //this.http._defaultOptions.headers.append('Authorization', "Bearer d4ba726eea679aaa23d03dc3edba6ece90d4f9d0");
+        // console.log(window.location.hostname);
     }
     ;
     ArduinoCloudService.prototype.readAllTemperatures = function () {

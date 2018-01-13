@@ -15,10 +15,11 @@ import 'rxjs/add/observable/interval';
 @Injectable()
 export class ArduinoCloudService {
 
-  private baseUrl: string = 'http://localhost:4080/api';
+  private baseUrl: string = 'http://'+window.location.hostname+':4080/api';
 
   constructor(private http: Http, private zone: NgZone) {
     //this.http._defaultOptions.headers.append('Authorization', "Bearer d4ba726eea679aaa23d03dc3edba6ece90d4f9d0");
+    // console.log(window.location.hostname);
   };
 
   public readAllTemperatures(): Observable<Sensor> {

@@ -39,10 +39,17 @@ dbConnection.connect(function(err) {
 
 function storeTemperatures(temps) {
   var timeStamp = new Date();
-  console.log('Storing Data');
-  console.log(temps);
-  let tempValues = JSON.parse(temps).Temp;
-  console.log(tempValues);
+  // console.log('Storing Data');
+  // console.log(temps);
+  let tempValues = {};
+
+  if (typeof temps === "string") {
+    tempValues = JSON.parse(temps).Temp;
+  } else {
+    tempValues = temps.Temp;
+  }
+
+  // console.log(tempValues);
   for (i = 0; i < tempValues.length; i++) {
     dbDataModel.time = timeStamp;
     dbDataModel.num = i;
