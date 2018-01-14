@@ -1561,14 +1561,13 @@ SensorDescriptor = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SensorList; });
 var SensorList = [
-    { index: 0, position: 100.0, description: 'Rinne' },
-    { index: 1, position: 30.0, description: 'Temp1' },
-    { index: 2, position: 70.0, description: 'Temp2' },
-    { index: 3, position: 10.0, description: 'Temp3' },
+    { index: 0, position: 68.0, description: 'Rinne' },
+    { index: 1, position: 24.0, description: 'Temp1' },
+    { index: 2, position: 67.0, description: 'Temp2' },
+    { index: 3, position: 12.0, description: 'Temp3' },
     { index: 4, position: 0.0, description: 'Boden' },
-    { index: 5, position: 55.0, description: 'Temp5' },
-    { index: 6, position: 80.0, description: 'Decke' },
-    { index: 7, position: 81.0, description: 'Temp7' }
+    { index: 5, position: 45.0, description: 'Temp5' },
+    { index: 6, position: 100.0, description: 'Decke' }
 ];
 //# sourceMappingURL=sensor-list.js.map
 
