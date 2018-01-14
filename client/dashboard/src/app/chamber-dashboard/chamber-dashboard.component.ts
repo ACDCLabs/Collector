@@ -2,6 +2,7 @@ import { TempGaugeComponent } from '../charts/tempGauge/tempGauge.component';
 import { Component, OnInit } from '@angular/core';
 import { ArduinoCloudService } from '../arduinoCloudService.service';
 import { Observable } from 'rxjs/Observable';
+import { SensorList} from '../models/sensor-list/sensor-list';
 
 @Component({
   selector: 'chamber-dashboardComponent',
@@ -14,6 +15,8 @@ export class ChamberDashboardComponent implements OnInit {
   private temperatures: number[];
   private sensorPositions: number[];
   private temperatureCurve: number[][];
+  private tempGradient: number;
+  private sensorList = SensorList;
 
   constructor(private arduinoCloudService: ArduinoCloudService) {
     this.pollTemperatures();
@@ -29,7 +32,8 @@ export class ChamberDashboardComponent implements OnInit {
       .switchMap(() => this.arduinoCloudService.readAllTemperatures())
       .subscribe((value) => {
         this.temperatures = value["data"]["Temp"];
-
+        this.tempGradient = (this.temperatures[3] - this.temperatures[4])/
+         (this.sensorList[3].position -this.sensorList[4].position)*10;
       });
   }
 

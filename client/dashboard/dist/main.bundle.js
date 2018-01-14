@@ -329,7 +329,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chamber-dashboard/chamber-dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <tempGauge [gaugeTemp]=\"temperatures[4]\"> </tempGauge>\n      <p class=\"text-center\"> Bodentemperatur </p>\n    </div>\n    <div class=\"col-md-4\">\n      <tempGauge [gaugeTemp]=\"temperatures[6]\"> </tempGauge>\n      <p class=\"text-center\"> Deckentemperatur </p>\n    </div>\n    <div class=\"col-md-4\">\n      <tempGauge [gaugeTemp]=\"temperatures[0]\"> </tempGauge>\n      <p class=\"text-center\"> Rinnentemperatur </p>\n    </div>\n  </div>\n</div>\n<!--\n  <div class=\"row\">\n    <a *ngFor=\"let temp of temperatures\">\n      <div class=\"col-md-3\">\n        <tempGauge [gaugeTemp]=\"temp\"> </tempGauge>\n      </div>\n    </a>\n  </div>\n</div>\n-->\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <tempGauge [gaugeTemp]=\"temperatures[4]\"> </tempGauge>\n      <p class=\"text-center\"> Bodentemperatur </p>\n    </div>\n    <div class=\"col-md-4\">\n      <tempGauge [gaugeTemp]=\"temperatures[6]\"> </tempGauge>\n      <p class=\"text-center\"> Deckentemperatur </p>\n    </div>\n    <div class=\"col-md-4\">\n      <tempGauge [gaugeTemp]=\"temperatures[0]\"> </tempGauge>\n      <p class=\"text-center\"> Rinnentemperatur </p>\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-md-12\">\n    <h4>\n    Gradient am Boden: {{tempGradient | number: '2.1-1'}}\n  </h4>\n  </div>\n</div>\n<!--\n  <div class=\"row\">\n    <a *ngFor=\"let temp of temperatures\">\n      <div class=\"col-md-3\">\n        <tempGauge [gaugeTemp]=\"temp\"> </tempGauge>\n      </div>\n    </a>\n  </div>\n</div>\n-->\n"
 
 /***/ }),
 
@@ -341,6 +341,7 @@ module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div cla
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__arduinoCloudService_service__ = __webpack_require__("../../../../../src/app/arduinoCloudService.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_sensor_list_sensor_list__ = __webpack_require__("../../../../../src/app/models/sensor-list/sensor-list.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -353,9 +354,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ChamberDashboardComponent = (function () {
     function ChamberDashboardComponent(arduinoCloudService) {
         this.arduinoCloudService = arduinoCloudService;
+        this.sensorList = __WEBPACK_IMPORTED_MODULE_3__models_sensor_list_sensor_list__["a" /* SensorList */];
         this.pollTemperatures();
     }
     ChamberDashboardComponent.prototype.ngOnInit = function () {
@@ -369,6 +372,8 @@ var ChamberDashboardComponent = (function () {
             .switchMap(function () { return _this.arduinoCloudService.readAllTemperatures(); })
             .subscribe(function (value) {
             _this.temperatures = value["data"]["Temp"];
+            _this.tempGradient = (_this.temperatures[3] - _this.temperatures[4]) /
+                (_this.sensorList[3].position - _this.sensorList[4].position) * 10;
         });
     };
     return ChamberDashboardComponent;
