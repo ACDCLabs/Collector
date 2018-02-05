@@ -66,7 +66,9 @@ export class ChamberTempDisplayComponent implements OnInit {
 
     series = [
       { type: 'area', name: "Temperature", color: 'rgba(148,202,255,1.0)', data: tempsAndPositions },
-      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve }
+      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve1 },
+      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve2 },
+      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve3 }
     ];
     // console.log(series);
     return series;
