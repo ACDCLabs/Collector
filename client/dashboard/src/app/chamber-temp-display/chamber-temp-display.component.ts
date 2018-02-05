@@ -20,13 +20,16 @@ export class ChamberTempDisplayComponent implements OnInit {
   private temperatureSeries: SeriesOptions[];
 
   // source: Markus Heide: Page 38
-  private referenceCurve =[[-41,0],[-28,6],[-22,11],[-16,20],[-7,30],[-1,42],[4,65],[5,95],[9,139]];
+  private referenceCurve1 =[[-41,0],[-28,6],[-22,11],[-16,20],[-7,30],[-1,42],[4,65],[5,95],[9,139]];
+  // source: Olga Stoppel isopropanol
+  private referenceCurve2 =[[-36,0],[-15,5],[-9,8],[-4,12],[1,18],[6,25],[12,38],[17,50],[22,67]];
+  private referenceCurve3 =[[-27,0],[-8,5],[-2,8],[3,12],[5,18],[10,25],[16,65],[20,50],[26,67]];
 
   constructor(private arduinoCloudService: ArduinoCloudService) {
     // this.temperatureCurve = this.buildChartSeries(this.temperatures);
     this.temperatureSeries = [
       { type: 'area', name: "Temperature", color: 'rgba(148,202,255,1.0)', data: [] },
-      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve }
+      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve1 }
     ];
     this.pollTemperatures();
   }

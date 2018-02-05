@@ -17,12 +17,13 @@ export class ChamberHistoryComponent implements OnInit {
 
   constructor(private arduinoCloudService: ArduinoCloudService) { }
 
-  private startDate = new Date('2017-12-30 11:30:00');
-  private endDate = new Date('2017-12-30 11:31:10');
+  private startDate = new Date();
+  private endDate = new Date();
 
   private sensor: Sensor;
   private sensors: Sensor[] = [];
   private sensorList = SensorList;
+
   // private test: Sensor ;
   // private testarray: Sensor[] =[{time: this.startDate, num: 1, temp: 2}];
   private tempHistory = [this.startDate, 1];
@@ -31,6 +32,7 @@ export class ChamberHistoryComponent implements OnInit {
   ngOnInit() {
     console.log("HistoryComponent ngInit");
     this.updateChart(this.startDate, this.endDate, 1);
+    this.startDate = this.endDate;
   }
 
   private onClickSensorNum(sensorNum: number) {

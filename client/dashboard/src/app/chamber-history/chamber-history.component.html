@@ -12,9 +12,25 @@
     <div class="my-selector">
       <ul>
         <!--li class="fa fa-th-list"></li-->
-        <li *ngFor="let sensordescr of sensorList" (click)="onClickSensorNum(sensordescr.index)"> <p>{{sensordescr.description}} </p></li>
+        <li *ngFor="let sensordescr of sensorList" (click)="onClickSensorNum(sensordescr.index)">
+          <p>{{sensordescr.description}} </p>
+        </li>
       </ul>
     </div>
+    <div>
+      <form>
+        <input name="text_input" (ngModel)="startDate" class="form-control" rows="3" placeholder="No Text">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-9">
+    <p>Range: {{startDate}} - {{endDate}}</p>
+  </div>
+  <div class="col-md-1">
   </div>
 </div>
 <!--
