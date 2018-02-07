@@ -27,10 +27,15 @@ export class ChamberTempDisplayComponent implements OnInit {
 
   constructor(private arduinoCloudService: ArduinoCloudService) {
     // this.temperatureCurve = this.buildChartSeries(this.temperatures);
+    /*
     this.temperatureSeries = [
       { type: 'area', name: "Temperature", color: 'rgba(148,202,255,1.0)', data: [] },
-      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve1 }
+      { type: 'line', name: "Ref1", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve1 },
+      { type: 'line', name: "Ref2", color: 'rgba(150,150,160,1.0)', data: this.referenceCurve2 },
+      { type: 'line', name: "Ref3", color: 'rgba(150,150,170,1.0)', data: this.referenceCurve3 }
     ];
+    */
+    this.temperatureSeries= this.buildChartSeries(this.temperatures);
     this.pollTemperatures();
   }
 
@@ -63,12 +68,11 @@ export class ChamberTempDisplayComponent implements OnInit {
     }
 
     tempsAndPositions.sort(this.sortFunction);
-
     series = [
-      { type: 'area', name: "Temperature", color: 'rgba(148,202,255,1.0)', data: tempsAndPositions },
-      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve1 },
-      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve2 },
-      { type: 'line', name: "Ref", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve3 }
+      { type: 'line', name: "Ref1", color: 'rgba(150,150,150,1.0)', data: this.referenceCurve1 },
+      { type: 'line', name: "Ref2", color: 'rgba(150,150,160,1.0)', data: this.referenceCurve2 },
+      { type: 'line', name: "Ref3", color: 'rgba(150,150,170,1.0)', data: this.referenceCurve3 },
+      { type: 'area', name: "Temperature", color: 'rgba(148,202,255,1.0)', data: tempsAndPositions }
     ];
     // console.log(series);
     return series;
